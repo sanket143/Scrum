@@ -1,3 +1,43 @@
 body {
-  font-family: sans-serif;
+  font-family: monospace;
+  font-size: 15px;
+}
+
+.scrum-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.scrum-title {
+  background-color: #e4e5e5;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.scrum-item {
+  padding: 10px;
+  border: 1px solid black;  
+}
+
+.push {
+  float: right;
+  font-weight: bold;
+  padding: 3px 3px 0px 3px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  margin: 1px;
+}
+
+#add-buffer {
+  padding: 10px;
+  margin: 3px 0px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#add-buffer:hover {
+  text-decoration: underline;
 }

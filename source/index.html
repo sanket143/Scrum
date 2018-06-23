@@ -6,8 +6,24 @@
     <title>Scrum</title>
   </head>
   <body>
-    <div class="body">
-      <h1>Scrum Board</h1>
+    <div class="scrum-board">
+      <div class="scrum-buffer">
+        <div class="scrum-title">Buffer</div>
+        <div id="scrum-buffer-list"></div>
+        <div id="add-buffer" contenteditable><span class="add-new-buffer">+</span> Add New Buffer</div>
+      </div>
+      <div class="scrum-inprogress">
+        <div class="scrum-title">In Progress</div>
+        <div id="scrum-inprogress-list"></div>
+      </div>
+      <div class="scrum-ready">
+        <div class="scrum-title">Ready</div>
+        <div id="scrum-ready-list"></div>
+      </div>
     </div>
+    <script>
+      require("./scripts/script.js");
+      require("./scripts/navigate.js");
+    </script>
   </body>
 </html>
