@@ -1,0 +1,26 @@
+{
+  "name": "scrum",
+  "version": "1.0.0",
+  "description": "Scrum Board to manage Project Progress and Buffer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanket143/Scrum.git"
+  },
+  "keywords": [
+    "scrum"
+  ],
+  "author": "Sanket Chaudhari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanket143/Scrum/issues"
+  },
+  "homepage": "https://github.com/sanket143/Scrum#readme",
+  "dependencies": {
+    "electron": "^2.0.3"
+  }
+}
