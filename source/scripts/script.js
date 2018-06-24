@@ -6,7 +6,7 @@ function async(data, callback){
 
 function slugify(value){
   value = value.toLowerCase();
-  value = value.replace(/\s+/, "_");
+  value = value.replace(/\s+/g, "_");
   return value;
 }
 
@@ -34,7 +34,6 @@ function add_buffer_in_list(item){
           });
 
           notify.onclick = function(){
-            console.log("Notification Clicked");
           }
         }
       });
@@ -43,8 +42,8 @@ function add_buffer_in_list(item){
 
   var buffer_list = document.getElementById("scrum-buffer-list");
   html = "";
-  html += '<div class="scrum-buffer-item scrum-item">';
-  html += '<span class="push" value="right"> > </span>';
+  html += '<div class="scrum-buffer-item scrum-item" id="' + slugify(item) + '">';
+  html += '<span class="push" onclick="push(event)" value="right"> > </span>';
   html += '<span class="scrum-buffer-item-span">' + item;
   html += '</span> ';
   html += '</div>';
@@ -57,14 +56,13 @@ fs.readFile("./data/data.json", function(err, data){
     console.log("File Error:", err);
   } else {
     var jsonObj = JSON.parse(data.toString());
-    console.log(jsonObj);
     async(jsonObj, function(data){
       var html = "";
       var buffer_list = document.getElementById("scrum-buffer-list");
       data.buffer.forEach(function(item){
         html = "";
-        html += '<div class="scrum-buffer-item scrum-item">';
-        html += '<span class="push" value="right"> > </span>';
+        html += '<div class="scrum-buffer-item scrum-item" id="' + slugify(item) + '">';
+        html += '<span class="push" onclick="push(event)" value="right"> > </span>';
         html += '<span class="scrum-buffer-item-span">' + item;
         html += '</span>';
         html += '</div>';
@@ -78,9 +76,9 @@ fs.readFile("./data/data.json", function(err, data){
       var inprogress_list = document.getElementById("scrum-inprogress-list");
       data.inprogress.forEach(function(item){
         html = "";
-        html += '<div class="scrum-inprogress-item scrum-item">';
-        html += '<span class="push" value="right"> > </span>';
-        html += '<span class="push" value="left"> < </span>';
+        html += '<div class="scrum-inprogress-item scrum-item" id="' + slugify(item) + '">';
+        html += '<span class="push" onclick="push(event)" value="right"> > </span>';
+        html += '<span class="push" onclick="push(event)" value="left"> < </span>';
         html += '<span class="scrum-inprogress-item-span">' + item;
         html += '</span>';
         html += '</div>';
@@ -94,8 +92,8 @@ fs.readFile("./data/data.json", function(err, data){
       var ready_list = document.getElementById("scrum-ready-list");
       data.ready.forEach(function(item){
         html = "";
-        html += '<div class="scrum-ready-item scrum-item">';
-        html += '<span class="push" value="left"> < </span>';
+        html += '<div class="scrum-ready-item scrum-item" id="' + slugify(item) + '">';
+        html += '<span class="push" onclick="push(event)" value="left"> < </span>';
         html += '<span class="scrum-ready-item-span">' + item;
         html += '</span>';
         html += '</div>';
@@ -109,7 +107,6 @@ fs.readFile("./data/data.json", function(err, data){
 const add_buffer = document.getElementById("add-buffer");
 
 function buffer_on_blur(){
-  console.log(add_buffer.innerText, add_buffer.innerText.length);
   if(add_buffer.innerText.replace(/\s+/g, "").length === 0){
     add_buffer.innerHTML = "<span class='add-new-buffer'>+</span> Add New Buffer</div>";
   }
